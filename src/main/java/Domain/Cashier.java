@@ -20,5 +20,55 @@ public class Cashier {
 
     private LocalDate joiningDate;
 
-    
+    public Cashier() {
+    }
+
+    public Cashier(Long cashierId, String username, String phone, LocalDate joiningDate) {
+        this.cashierId = cashierId;
+        this.username = username;
+        this.phone = phone;
+        this.joiningDate = joiningDate;
+    }
+
+    public Long getCashierId() {
+        return cashierId;
+    }
+
+    public void setCashierId(Long cashierId) {
+        this.cashierId = cashierId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(LocalDate joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Cashier{" +
+                "cashierId=" + cashierId +
+                ", username='" + username + '\'' +
+                ", phone='" + phone + '\'' +
+                ", joiningDate=" + joiningDate +
+                '}';
+    }
 }
