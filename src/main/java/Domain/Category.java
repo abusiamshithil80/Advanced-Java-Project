@@ -12,6 +12,9 @@ public class Category {
     @Size(max = 100, message = "Category name must not exceed 100 characters")
     private String name;
 
+    public Category() {
+    }
+
     public Category(Long categoryId, String name) {
         this.categoryId = categoryId;
         this.name = name;

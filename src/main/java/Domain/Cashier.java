@@ -18,16 +18,15 @@ public class Cashier {
     @Pattern(regexp = "^(?:01[3-9]\\d{8}|)$", message = "Enter a valid Bangladeshi mobile number")
     private String phone;
 
-    private LocalDate joiningDate;
+
 
     public Cashier() {
     }
 
-    public Cashier(Long cashierId, String username, String phone, LocalDate joiningDate) {
+    public Cashier(Long cashierId, String username, String phone) {
         this.cashierId = cashierId;
         this.username = username;
         this.phone = phone;
-        this.joiningDate = joiningDate;
     }
 
     public Long getCashierId() {
@@ -54,21 +53,12 @@ public class Cashier {
         this.phone = phone;
     }
 
-    public LocalDate getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(LocalDate joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
     @Override
     public String toString() {
         return "Cashier{" +
                 "cashierId=" + cashierId +
                 ", username='" + username + '\'' +
                 ", phone='" + phone + '\'' +
-                ", joiningDate=" + joiningDate +
                 '}';
     }
 }

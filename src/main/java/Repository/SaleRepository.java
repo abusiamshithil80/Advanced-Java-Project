@@ -29,6 +29,12 @@ public class SaleRepository {
             WHERE cashierUsername = ?
             ORDER BY saleDate DESC
             """;
+    private static final String GET_BY_CUSTOMER = """
+            SELECT saleId, cashierUsername, customerId, saleDate, totalAmount
+            FROM sales
+            WHERE customerId = ?
+            ORDER BY saleDate DESC
+            """;
     private static final String GET_ITEMS_BY_SALE = """
             SELECT saleItemId, productId, quantity, unitPrice, subtotal
             FROM sale_item
@@ -74,6 +80,14 @@ public class SaleRepository {
 
     public List<Sale> getByCashierUsername(String cashierUsername) {
         List<Sale> sales = jdbcTemplate.query(GET_BY_CASHIER, new SaleMapper(), cashierUsername);
+        for (Sale sale : sales) {
+            sale.setItems(getItemsBySaleId(sale.getSaleId()));
+        }
+        return sales;
+    }
+
+    public List<Sale> getByCustomerId(Long customerId) {
+        List<Sale> sales = jdbcTemplate.query(GET_BY_CUSTOMER, new SaleMapper(), customerId);
         for (Sale sale : sales) {
             sale.setItems(getItemsBySaleId(sale.getSaleId()));
         }

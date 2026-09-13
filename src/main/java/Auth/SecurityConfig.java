@@ -37,8 +37,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(registry ->
                         registry.requestMatchers("/api/public/**").permitAll()
                                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/categories/**").hasRole("ADMIN")
                                 .requestMatchers("/api/cashier/**").hasAnyRole("CASHIER", "ADMIN")
                                 .requestMatchers("/api/cashiers/**").hasAnyRole("CASHIER", "ADMIN")
+                                .requestMatchers("/api/customer/**").hasRole("CUSTOMER")
                                 .requestMatchers("/api/customers/**").hasAnyRole("CUSTOMER", "CASHIER", "ADMIN")
                                 .requestMatchers("/api/products/**").hasAnyRole("ADMIN", "CASHIER", "CUSTOMER")
                                 .anyRequest().authenticated()

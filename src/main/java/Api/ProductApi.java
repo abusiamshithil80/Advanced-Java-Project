@@ -53,8 +53,7 @@ public class ProductApi {
     }
 
     @PutMapping("/{productId}/stock")
-    public ResponseEntity<Void> updateStock(@PathVariable Long productId, @RequestParam @Min(value = 0, message = "Stock quantity cannot be negative") Integer stockQuantity
-    ) {
+    public ResponseEntity<Void> updateStock(@PathVariable Long productId, @RequestParam @Min(value = 0, message = "Stock quantity cannot be negative") Integer stockQuantity) {
         productService.updateStock(productId, stockQuantity);
         return ResponseEntity.ok().build();
     }

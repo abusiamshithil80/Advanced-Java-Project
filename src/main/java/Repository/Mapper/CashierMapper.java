@@ -10,6 +10,6 @@ public class CashierMapper implements RowMapper<Cashier> {
 
     @Override
     public Cashier mapRow(ResultSet rs, int rowNum) throws SQLException{
-        return new Cashier(rs.getLong("cashierId"), rs.getString("username"), rs.getString("phone"), rs.getDate("joiningDate").toLocalDate() );
+        return new Cashier(rs.getLong("cashierId"), rs.getString("username"), rs.getString("phone") );
     }
 }

@@ -13,6 +13,7 @@ public class UserRepository {
     private static final String INSERT_USER = "INSERT INTO users (username, password, enabled) VALUES (?, ?, ?)";
     private static final String INSERT_AUTHORITY = "INSERT INTO authorities (username, authority) VALUES (?, ?)";
     private static final String USER_EXISTS = "SELECT COUNT(*) FROM users WHERE username = ?";
+    private static final String UPDATE_PASSWORD = "UPDATE users SET password = ? WHERE username = ?";
     private static final String GET_ALL_USERS = """
             SELECT u.username, u.enabled, a.authority AS role
             FROM users u
@@ -46,5 +47,9 @@ public class UserRepository {
 
     public List<UserAccount> getAll() {
         return jdbcTemplate.query(GET_ALL_USERS, new UserMapper());
+    }
+
+    public int updatePassword(String username, String password) {
+        return jdbcTemplate.update(UPDATE_PASSWORD, password, username);
     }
 }
