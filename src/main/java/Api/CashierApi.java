@@ -43,10 +43,7 @@ public class CashierApi {
     }
 
     @PutMapping("/{cashierId}")
-    public ResponseEntity<Void> update(
-            @PathVariable Long cashierId,
-            @Valid @RequestBody Cashier cashier
-    ) {
+    public ResponseEntity<Void> update(@PathVariable Long cashierId, @Valid @RequestBody Cashier cashier) {
         cashier.setCashierId(cashierId);
         cashierService.update(cashier);
         return ResponseEntity.ok().build();

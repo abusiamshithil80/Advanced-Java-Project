@@ -31,9 +31,14 @@ public class CustomerApi {
         return ResponseEntity.ok(customerService.getAll());
     }
 
-    @GetMapping("/{customerId}")
+    @GetMapping("/id/{customerId}")
     public Customer getById(@PathVariable Long customerId) {
         return ResponseEntity.ok(customerService.getById(customerId)).getBody();
+    }
+
+    @GetMapping("/phone/{phone}")
+    public Customer getByPhone(@PathVariable String phone){
+        return ResponseEntity.ok(customerService.getByPhone(phone)).getBody();
     }
 
     @PostMapping
@@ -43,10 +48,7 @@ public class CustomerApi {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<Void> update(
-            @PathVariable Long customerId,
-            @Valid @RequestBody Customer customer
-    ) {
+    public ResponseEntity<Void> update(@PathVariable Long customerId, @Valid @RequestBody Customer customer) {
         return customerService.update(customerId, customer)
                 ? ResponseEntity.ok().build()
                 : ResponseEntity.notFound().build();

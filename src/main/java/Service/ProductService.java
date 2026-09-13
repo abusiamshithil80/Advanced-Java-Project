@@ -2,7 +2,6 @@ package Service;
 
 import Domain.Product;
 import Repository.ProductRepository;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +19,14 @@ public class ProductService {
         return productRepository.getAll();
     }
 
+    public Product getByName(String name) {
+        return  productRepository.getByName(name);
+    }
+
+    public List<Product> getByCategoryName(String categoryName) {
+        return productRepository.getByCategoryName(categoryName);
+    }
+    
     public Product getById(Long productId) {
         return productRepository.getById(productId);
     }

@@ -18,6 +18,7 @@ public class CustomerRepository {
             JOIN users u ON c.username = u.username
             WHERE c.username = ?
             """;
+    private static final String GET_BY_PHONE ="SELECT * FROM customer WHERE phone = ?";
     private static final String INSERT = "INSERT INTO customer (username, phone, address) VALUES (?, ?, ?)" ;
     private static final String UPDATE = "UPDATE customer SET username = ?, phone = ?, address = ? WHERE customerId = ?";
     private static final String DELETE = "DELETE FROM customer WHERE customerId = ?";
@@ -35,6 +36,11 @@ public class CustomerRepository {
     public Customer getById(Long customerId) {
         return jdbcTemplate.queryForObject(GET_BY_ID,new CustomerMapper(), customerId);
     }
+
+    public Customer getByPhone(String phone) {
+        return jdbcTemplate.queryForObject(GET_BY_PHONE,new CustomerMapper(), phone);
+    }
+
 
     public List<Customer> getByUsername(String username) {
         return jdbcTemplate.query(GET_BY_USERNAME, new CustomerMapper(), username);

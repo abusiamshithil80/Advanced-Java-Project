@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/api/categories/**").hasRole("ADMIN")
                                 .requestMatchers("/api/cashier/**").hasAnyRole("CASHIER", "ADMIN")
-                                .requestMatchers("/api/cashiers/**").hasAnyRole("CASHIER", "ADMIN")
+                                .requestMatchers("/api/cashiers/**").hasAnyRole( "ADMIN")
                                 .requestMatchers("/api/customer/**").hasRole("CUSTOMER")
                                 .requestMatchers("/api/customers/**").hasAnyRole("CUSTOMER", "CASHIER", "ADMIN")
                                 .requestMatchers("/api/products/**").hasAnyRole("ADMIN", "CASHIER", "CUSTOMER")

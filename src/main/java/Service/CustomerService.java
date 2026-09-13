@@ -35,6 +35,10 @@ public class CustomerService {
         return customerRepository.getById(customerId);
     }
 
+    public Customer getByPhone(String phone){
+        return customerRepository.getByPhone(phone);
+    }
+
     public int save(Customer customer) {
         return customerRepository.save(customer);
     }

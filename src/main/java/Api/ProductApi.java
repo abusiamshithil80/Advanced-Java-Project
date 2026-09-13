@@ -38,6 +38,16 @@ public class ProductApi {
         return ResponseEntity.ok(productService.getById(productId));
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Product> getByName(@PathVariable String name) {
+        return  ResponseEntity.ok(productService.getByName(name));
+    }
+
+    @GetMapping("/category/{categoryName}")
+    public ResponseEntity<List<Product>> getByCategoryName(@PathVariable String categoryName) {
+        return ResponseEntity.ok(productService.getByCategoryName(categoryName));
+    }
+
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody Product product) {
         productService.save(product);

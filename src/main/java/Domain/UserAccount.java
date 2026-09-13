@@ -18,6 +18,7 @@ public class UserAccount {
     @Pattern(regexp = "ADMIN|CASHIER|CUSTOMER", message = "Role must be ADMIN, CASHIER, or CUSTOMER")
     private String role;
 
+    @Pattern(regexp = "^(?:01[3-9]\\d{8}|)$", message = "Enter a valid mobile number")
     private String phone;
 
     private String address;

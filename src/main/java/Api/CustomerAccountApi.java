@@ -30,10 +30,7 @@ public class CustomerAccountApi {
     }
 
     @PutMapping("/password")
-    public ResponseEntity<Void> updatePassword(
-            @Valid @RequestBody PasswordChange passwordChange,
-            Authentication authentication
-    ) {
+    public ResponseEntity<Void> updatePassword(@Valid @RequestBody PasswordChange passwordChange, Authentication authentication) {
         customerService.updatePassword(authentication.getName(), passwordChange.getNewPassword());
         return ResponseEntity.ok().build();
     }

@@ -25,10 +25,7 @@ public class CashierSaleApi {
     }
 
     @PostMapping
-    public ResponseEntity<Long> createSale(
-            @Valid @RequestBody Sale sale,
-            Authentication authentication
-    ) {
+    public ResponseEntity<Long> createSale(@Valid @RequestBody Sale sale, Authentication authentication) {
         sale.setCashierUsername(authentication.getName());
         Long saleId = saleService.createSale(sale);
         return ResponseEntity.status(HttpStatus.CREATED).body(saleId);
