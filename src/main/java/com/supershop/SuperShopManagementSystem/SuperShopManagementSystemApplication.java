@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "com.supershop.SuperShopManagementSystem",
         "Api",
         "Service",
-        "Repository"
+        "Repository",
+        "Auth"
 })
 
 
